@@ -104,6 +104,7 @@ else
 	end
 	Stats = true
 end
+wait(1)
 until(Stats)
 end
 

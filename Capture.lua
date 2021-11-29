@@ -37,8 +37,8 @@ if (Stats == "Cook") then
 	until(Stats ~= "Cook")
 	print("No food available")
 	
-	--CookingLib = loadstring(httpGet("https://raw.githubusercontent.com/Achie007/Ankulua-Ulala-Idle-Adventure/main/Cooking.lua"))
-	--CookingLib()
+	CookingLib2 = loadstring(httpGet("https://raw.githubusercontent.com/Achie007/Ankulua-Ulala-Idle-Adventure/main/Cooking.lua"))
+	CookingLib2()
 
 	--PetClick()
 	--ReadAll()
