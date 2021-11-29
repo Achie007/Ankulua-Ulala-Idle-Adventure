@@ -38,7 +38,7 @@ if (Stats == "Cook") then
 	print("No food available")
 	
 	CookingLib = loadstring(httpGet("https://raw.githubusercontent.com/Achie007/Ankulua-Ulala-Idle-Adventure/main/Cooking.lua"))
-	CookingLib() end
+	CookingLib()
 
 	PetClick()
 	ReadAll()
