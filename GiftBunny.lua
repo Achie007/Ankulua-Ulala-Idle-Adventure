@@ -12,7 +12,6 @@ function Answering()
 end
 
 function start()
---
 Answering()
 end
 
