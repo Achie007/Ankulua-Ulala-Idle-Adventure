@@ -38,13 +38,11 @@ if (Stats == "Cook") then
 	print("No food available")
 	
 	CookingLib2 = loadstring(httpGet("https://raw.githubusercontent.com/Achie007/Ankulua-Ulala-Idle-Adventure/main/Cooking.lua"))
-	CookingLib2()
-
-	--PetClick()
-	--ReadAll()
-	--CaptureClick()
-	--CheckCaptureStatus()
-print(version)
+	CookingLib2()	
+	PetClick()
+	ReadAll()
+	CaptureClick()
+	CheckCaptureStatus()
 else
 	PressUntil(PetCaptureFolder.. "PetSelectFoodConfirmBtn.png", PetCaptureFolder.. "PetCaptureGiveUpBtn.png", 1)-- Clicking Confirm Button
 end
