@@ -3,7 +3,8 @@ version = "GiftBunny: 1.0.1"
 
 usePreviousSnap(false)
 local Folder = "Fight/"
-local GiftBunnyFolder = Folder.."GiftBunny/"
+local HareBurrow = Folder.."HareBurrow/"
+local GiftBunnyFolder = HareBurrow.."GiftBunny/"
 
 
 function Answering()
@@ -19,4 +20,4 @@ end
 
 --print("Gift bunny under process")
 
-PressUntil(GiftBunnyFolder.. "HareBurrow.png", GiftBunnyFolder.. "HareBurrow.png")
+PressUntil(GiftBunnyFolder.. "HareBurrow.png", GiftBunnyFolder.. "AllMaps.png")
