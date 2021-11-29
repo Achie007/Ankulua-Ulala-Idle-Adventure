@@ -36,7 +36,10 @@ if (Stats == "Cook") then
 		Stats = SearchImageScreen(PetCaptureStatus)
 	until(Stats ~= "Cook")
 	print("No food available")
-	dofile(scriptPath() .. "Cooking.lua")	
+	
+	CookingLib = loadstring(httpGet("https://raw.githubusercontent.com/Achie007/Ankulua-Ulala-Idle-Adventure/main/Cooking.lua"))
+	CookingLib() end
+
 	PetClick()
 	ReadAll()
 	CaptureClick()
