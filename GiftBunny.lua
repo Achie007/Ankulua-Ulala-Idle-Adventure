@@ -20,3 +20,4 @@ end
 --print("Gift bunny under process")
 
 PressUntil(GiftBunnyFolder.. "HareBurrow.png", GiftBunnyFolder.. "AllMaps.png")
+Press(GiftBunnyFolder.. "GiftBunnyBtn.png")
