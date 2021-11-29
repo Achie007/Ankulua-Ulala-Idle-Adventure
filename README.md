@@ -22,10 +22,10 @@ FEATURES:
 11. Hero Training - Basic Training Ground
 12. Adventure Guild - Claim finished quests
 13. Auto Attack - 0 for infinite
+14. Adventure Guild - Claim Golden Finger and Wish Coin
+15. Auto Arena
 
 TODOS:
 
 1. Hero Training Random/Choose between Basic or Advanced
-2. Adventure Guild - Claim Golden Finger and Wish Coin
-3. Auto Arena
-4. Auto Hare Burrow
+2. Auto Hare Burrow
