@@ -35,8 +35,8 @@ end
 
 
 function ClaimAll()
-Press(PetAdventureFolder.. "PetAdventureClaimAllBtn.png", PetAdventureFolder.. "PetAdventureTaptoContinue.png", 1)
-Press(PetAdventureFolder.. "PetAdventureTaptoContinue.png", PetAdventureFolder.. "PetAdventureQuickAdventureBtn.png", 1) --clicking tap to continue button
+PressUntil(PetAdventureFolder.. "PetAdventureClaimAllBtn.png", PetAdventureFolder.. "PetAdventureTaptoContinue.png", 1)
+PressUntil(PetAdventureFolder.. "PetAdventureTaptoContinue.png", PetAdventureFolder.. "PetAdventureQuickAdventureBtn.png", 1) --clicking tap to continue button
 end
 
 function QuickAdventure2()
