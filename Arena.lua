@@ -1,5 +1,5 @@
 setImmersiveMode(true)
-version = "Capture: 1.0.1"
+version = "Arena: 1.0.1"
 
 usePreviousSnap(false)
 local Folder = "Camp/"
@@ -87,21 +87,26 @@ function ending()
 keyevent(4)
 end
 
-function Start()
-CampStatus()
-SearchArena()
-ClickArena()
-
+function victories()
 Victories = SearchImageScreen({ArenaFolder.. "5Victories.png"})
-if not (Victories == "5Victories") then
+print(Victories)
+if (Victories) then
+Stats = "Completed"
+else
 	PressUntil(ArenaFolder.. "ChallengeBtn.png", ArenaFolder.. "StartChallenge.png")
 	wait(1)
 	repeat
 		GetlowestnClick()
 		Stats = SearchImageScreen(ArenaAttempts)
 	until(Stats)
-else Stats = "Completed"
 end
+end
+
+function Start()
+CampStatus()
+SearchArena()
+ClickArena()
+victories()
 ending()
 print(version.. " " .. Stats)
 end
