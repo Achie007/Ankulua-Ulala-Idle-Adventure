@@ -55,7 +55,6 @@ end
 
 function Start()
 CheckAdventureStatus()
-wait(1)
 CheckAdventureClaimStatus()
 print(version)
 end
