@@ -2,7 +2,7 @@ setImmersiveMode(true)
 
 usePreviousSnap(false)
 
-FolderExists("image")
+FolderExists(scriptPath().. "image")
 --------------CAMP
 FolderExists(scriptPath().. "image/Camp")
 	ChecknDownload("Camp/CampBtn.png")
