@@ -6,26 +6,45 @@ local Folder = "Fight/"
 local HareBurrow = Folder.."HareBurrow/"
 local GiftBunnyFolder = HareBurrow.."GiftBunny/"
 
+function Answering(Answer)
+AnswerStats = GiftBunnyFolder.. "Answer"..Answer..".png"
+repeat
+	Stats = SearchImage({AnswerStats})
+until (Stats)
+repeat
+Press(AnswerStats)
+wait(1)
+Stats = SearchImageScreen({GiftBunnyFolder.. "Question2.png", GiftBunnyFolder.. "Question3.png", GiftBunnyFolder.. "QuestionCleared.png"})
+until(Stats)
+end
 
-function Answering()
-
+function StartingGiftBunny()
+if (SearchImageScreen({GiftBunnyFolder.. "GiftBunnyBtn.png"})) then
+	repeat
+		Press(GiftBunnyFolder.. "GiftBunnyBtn.png")
+		Stats = SearchImageScreen({GiftBunnyFolder.. "GiftBunnyBtn.png"})
+	until not (Stats)
+	repeat
+		Stats = SearchImageScreen({GiftBunnyFolder.. "I'mReady.png", GiftBunnyFolder.. "Question1.png"})
+	until(Stats)
+	if (Stats == "I'mReady") then PressUntil(GiftBunnyFolder.. "I'mReady.png", GiftBunnyFolder.. "Question1.png") end
+	Answering(BAnswer1)
+	Answering(BAnswer2)
+	Answering(BAnswer3)	
+	repeat
+		Press(GiftBunnyFolder.. "QuestionCleared.png")
+		wait(1)
+		Stats = SearchImageScreen({GiftBunnyFolder.. "QuestionCleared.png"})
+	until not (Stats)
+else
+	print("Gift Bunny Closed")
+end
+	print(version)
 end
 
 function start()
-Answering()
-end
-
---start()
-
-
-
---print("Gift bunny under process")
 OpeningHareBurrow()
+StartingGiftBunny()
+end
 
-function tester()
-if (SearchImageScreen({GiftBunnyFolder.. "GiftBunnyBtn.png"})) then
-Press(GiftBunnyFolder.. "GiftBunnyBtn.png")
-print(123)
-end
-print(222)
-end
+start()

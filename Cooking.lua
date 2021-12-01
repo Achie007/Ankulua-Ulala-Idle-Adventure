@@ -18,16 +18,18 @@ end
 function FoodClick()
 	local Random
 	repeat
-	Random = RandomNumber()
-	until(SearchImage({FoodListFolder.. "Food" ..Random.. ".png"}))
+		Random = RandomNumber()
+		local Food = FoodListFolder.. "Food" ..Random.. ".png"
+	until(SearchImage({Food}))
 	
 	repeat
-	Press(FoodListFolder.. "Food" ..Random.. ".png")
+		Press(Food)
+		stats = SearchImage({Food})
 	until not (stats)
 	
 	repeat
-	stats = SearchImageScreen({FoodListFolder.. "Food" ..Random.. ".png"})
-	if (stats) then Press(FoodListFolder.. "Food" ..Random.. ".png") end
+	stats = SearchImageScreen({Food})
+	if (stats) then Press(Food) end
 	wait(.2)
 until not(stats)
 	PressUntil(CookFolder.. "CookingCook.png", CookFolder.. "CookingCooking.png")

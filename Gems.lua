@@ -21,9 +21,10 @@ end
 function GearEnhancement()
 PressUntil(EquipFolder.. "CharQuickEnhance.png", EquipFolder.. "CharGearEnhancementQuickGem.png", 1)-- click Quick Enhance Button
 PressUntil(EquipFolder.. "CharGearEnhancementQuickGem.png", EquipFolder.. "CharGearEnhancementQuickFuse.png", 1)-- click Quick Gem Button
-PressUntil(EquipFolder.. "CharGearEnhancementQuickFuse.png", EquipFolder.. "QuickFuse0.png", 1)-- click Quick Fuse Button
---PressUntil(EquipFolder.. "CharGearEnhancementQuickFuse.png", EquipFolder.. "CharGearEnhancementQuickFuseCloseBtn.png", 1)-- click Quick Fuse Button
---PressUntil(EquipFolder.. "CharGearEnhancementQuickFuseCloseBtn.png", EquipFolder.. "CharQuickEnhance.png", 1)-- click on X button
+repeat
+stats = SearchImageScreen({EquipFolder.. "Checkfuse.png"})
+	if (stats) then Press(EquipFolder.. "CharGearEnhancementQuickFuse.png") end
+until not(stats)
 end
 
 function ending()
