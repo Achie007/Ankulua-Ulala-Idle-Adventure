@@ -17,7 +17,15 @@ end
 
 --start()
 
---print("Gift bunny under process")
 
-PressUntil(GiftBunnyFolder.. "HareBurrow.png", GiftBunnyFolder.. "AllMaps.png")
+
+--print("Gift bunny under process")
+OpeningHareBurrow()
+
+function tester()
+if (SearchImageScreen({GiftBunnyFolder.. "GiftBunnyBtn.png"})) then
 Press(GiftBunnyFolder.. "GiftBunnyBtn.png")
+print(123)
+end
+print(222)
+end

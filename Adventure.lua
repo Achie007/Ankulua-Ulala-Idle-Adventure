@@ -24,6 +24,7 @@ Stats = SearchImageScreen(PetAdventureStatus)
 if (Stats) then --Not Pending
 	if (Stats == "PetAdventureFinished") then
 		ClaimAll()
+		wait(.5)
 		QuickAdventure()
 	else
 		QuickAdventure()
@@ -35,18 +36,20 @@ end
 
 
 function ClaimAll()
-PressUntil(PetAdventureFolder.. "PetAdventureClaimAllBtn.png", PetAdventureFolder.. "PetAdventureTaptoContinue.png", 1)
+print("claiming")
+repeat
+Press(PetAdventureFolder.. "PetAdventureClaimAllBtn.png", 1)
+wait(1)
+Stats = SearchImageScreen({PetAdventureFolder.. "PetAdventureClaimAllBtn.png"})
+until not (Stats)
+--PressUntil(PetAdventureFolder.. "PetAdventureClaimAllBtn.png", PetAdventureFolder.. "PetAdventureTaptoContinue.png", 1)
+print("tap to continue")
 PressUntil(PetAdventureFolder.. "PetAdventureTaptoContinue.png", PetAdventureFolder.. "PetAdventureQuickAdventureBtn.png", 1) --clicking tap to continue button
-end
-
-function QuickAdventure2()
-Press(PetAdventureFolder.. "PetAdventureQuickAdventureBtn.png", PetAdventureFolder.. "PetAdventureQuickJoinBtn.png", 1) --clicking Quick Adventure button
-Press(PetAdventureFolder.. "PetAdventureQuickJoinBtn.png", PetAdventureFolder.. "PetAdventureStartAdventureBtn.png", 1) --clicking Quick Join button
-Press(PetAdventureFolder.. "PetAdventureStartAdventureBtn.png", PetAdventureFolder.. "PetAdventureStartAdventureConfirmBtn.png", 1) --clicking Start Adventure button
-Press(PetAdventureFolder.. "PetAdventureStartAdventureConfirmBtn.png", PetAdventureFolder.. "PetAdventureClaimAllBtn.png", 1) --clicking Confirm button
+print("done claiming")
 end
 
 function QuickAdventure()
+print("start quick adventure")
 PressUntil(PetAdventureFolder.. "PetAdventureQuickAdventureBtn.png", PetAdventureFolder.. "PetAdventureQuickJoinBtn.png", 1) --clicking Quick Adventure button
 PressUntil(PetAdventureFolder.. "PetAdventureQuickJoinBtn.png", PetAdventureFolder.. "PetAdventureStartAdventureBtn.png", 1) --clicking Quick Join button
 PressUntil(PetAdventureFolder.. "PetAdventureStartAdventureBtn.png", PetAdventureFolder.. "PetAdventureStartAdventureConfirmBtn.png", 1) --clicking Start Adventure button

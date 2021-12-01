@@ -20,7 +20,16 @@ function FoodClick()
 	repeat
 	Random = RandomNumber()
 	until(SearchImage({FoodListFolder.. "Food" ..Random.. ".png"}))
+	
+	repeat
 	Press(FoodListFolder.. "Food" ..Random.. ".png")
+	until not (stats)
+	
+	repeat
+	stats = SearchImageScreen({FoodListFolder.. "Food" ..Random.. ".png"})
+	if (stats) then Press(FoodListFolder.. "Food" ..Random.. ".png") end
+	wait(.2)
+until not(stats)
 	PressUntil(CookFolder.. "CookingCook.png", CookFolder.. "CookingCooking.png")
 	PressUntil(CookFolder.. "CookingCooking.png", CookFolder.. "CookSkip.png")
 	PressUntil(CookFolder.. "CookSkip.png", CookFolder.. "ViewRecipe.png")
@@ -40,3 +49,4 @@ print(version)
 end
 
 Start()
+
