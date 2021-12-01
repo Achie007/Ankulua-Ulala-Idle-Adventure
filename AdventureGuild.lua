@@ -58,28 +58,10 @@ sleep(1)
 until(Stats == nil)
 end
 
-function AdventureGuild()
-Claiming()
-repeat
-sleep(1)
-until(SearchImageScreen({AdventurerGuildFolder.. "WishCoin.png"}))
-Press(AdventurerGuildFolder.. "GoldenFinger.png")
-sleep(1)
-Press(AdventurerGuildFolder.. "Authority.png")
-sleep(1)
-Press(AdventurerGuildFolder.. "WishCoin.png")
-sleep(1)
-Press(AdventurerGuildFolder.. "RewardObtained.png")
-sleep(1)
-Press(AdventurerGuildFolder.. "Wish.png")
-Press(AdventurerGuildFolder.. "MakeAWish.png")
-Press(AdventurerGuildFolder.. "Skip.png")
-end
-
-function ending()
-repeat
-keyevent(4)
-until(SearchImageScreen({Folder.. "CampBtnClicked.png"}))
+function WishTime()
+PressUntil(AdventurerGuildFolder.. "Wish.png", AdventurerGuildFolder.. "MakeAWish.png")
+PressUntil(AdventurerGuildFolder.. "MakeAWish.png", AdventurerGuildFolder.. "Skip.png")
+PressUntil(AdventurerGuildFolder.. "Skip.png", AdventurerGuildFolder.. "NoWish.png")
 end
 
 function Checker(X, Y, Remarks)
@@ -91,16 +73,22 @@ if (tonumber(Col[1]) == 215 and tonumber(Col[2]) == 202 and tonumber(Col[3]) == 
 elseif (tonumber(Col[1]) == 255 and tonumber(Col[2]) == 255 and tonumber(Col[3]) == 255) then
 elseif (tonumber(Col[1]) == 0 and tonumber(Col[2]) == 0 and tonumber(Col[3]) == 0) then
 else
-	--print(Remarks)
 	toast(Remarks)
 	if (Remarks == "Finger") then
 		PressUntil(AdventurerGuildFolder.. "GoldenFinger.png", AdventurerGuildFolder.. "Authority.png")
+		repeat
 		Press(AdventurerGuildFolder.. "Authority.png")
+		AuthorityStats = SearchImageScreen({AdventurerGuildFolder.. "Authority.png"})
+		until not (AuthorityStats)
 		wait(1)
 	else
 		PressUntil(AdventurerGuildFolder.. "WishCoin.png", AdventurerGuildFolder.. "RewardObtained.png")
+		repeat
 		Press(AdventurerGuildFolder.. "RewardObtained.png")
+		RewardStats = SearchImageScreen({AdventurerGuildFolder.. "RewardObtained.png"})
+		until not (RewardStats)
 		wait(1)
+		WishTime()
 	end
 	Stats = true
 end
@@ -108,14 +96,22 @@ wait(1)
 until(Stats)
 end
 
+function ending()
+repeat
+keyevent(4)
+until(SearchImageScreen({Folder.. "CampBtnClicked.png"}))
+end
+
 function Start()
 CampStatus()
 DailyQuestStatus()
 Checker(318, 513, "Finger")
 Checker(479, 517, "Coin")
+ending()
 print("Done")
---AdventureGuild()
---ending()
 end
 
 Start()
+
+
+

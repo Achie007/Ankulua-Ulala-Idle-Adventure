@@ -8,6 +8,18 @@ local OCRFolder = "OCR/"
 local index = 1
 touchList = {}
 
+function ArenaOCR()
+repeat
+	SBunny = SearchImage({ArenaFolder.. "OCRImg.png"})
+until(SBunny)
+bX = Split(SBunny, ",")[1]
+bY = Split(SBunny, ",")[2]
+r = Region(tonumber(bX) + 11, tonumber(bY) - 18, 30, 38)
+--r:highlight(2)
+p = numberOCRNoFindException(r,OCRFolder.. "A")
+return p
+end
+
 function CampStatus()
     if (SearchImageScreen(Screen) ~= "CampBtnClicked") then  -- Pet Button not Clicked
 	PressUntil(Folder.. "CampBtn.png", Folder.. "CampBtnClicked.png")
@@ -84,16 +96,31 @@ end
 end
 
 function ending()
+repeat
 keyevent(4)
+wait(.5)
+until(SearchImageScreen({Folder.. "CampBtnClicked.png"}))
 end
 
 function victories()
-Victories = SearchImageScreen({ArenaFolder.. "5Victories.png"})
-print(Victories)
-if (Victories) then
+--Victories = SearchImageScreen({ArenaFolder.. "5Victories.png"})
+Victories = ArenaOCR()
+if (Victories == 5) then
 Stats = "Completed"
+elseif (Victories == -999999) then
+	wait(1)
+	victories()
 else
-	PressUntil(ArenaFolder.. "ChallengeBtn.png", ArenaFolder.. "StartChallenge.png")
+	Victories2()
+end
+end
+
+function Victories2()
+Stats = SearchImageScreen({ArenaFolder.. "ZeroAttempts.png"})
+print(Stats)
+if (Stats) then
+else
+PressUntil(ArenaFolder.. "ChallengeBtn.png", ArenaFolder.. "StartChallenge.png")
 	wait(1)
 	repeat
 		GetlowestnClick()
@@ -112,3 +139,6 @@ print(version.. " " .. Stats)
 end
 
 Start()
+
+--Stats = SearchImageScreen({ArenaFolder.. "ZeroAttempts.png"})
+--print(Stats)

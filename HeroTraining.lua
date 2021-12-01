@@ -17,13 +17,12 @@ PressUntil(HeroTrainingFolder.. "HeroTrainingGround.png", HeroTrainingFolder.. "
 end
 
 function HeroTrainingGround()
-PressUntil(HeroTrainingFolder.. "BasicTrainingGround.png", HeroTrainingFolder.. "BasicTrainingGroundStartChallenge.png")
+if (HeroTrainingDummy == 1) then PressUntil(HeroTrainingFolder.. "BasicTrainingGround.png", HeroTrainingFolder.. "BasicTrainingGroundStartChallenge.png")
+else PressUntil(HeroTrainingFolder.. "AdvancedTrainingGround.png", HeroTrainingFolder.. "BasicTrainingGroundStartChallenge.png")
+end
 PressUntil(HeroTrainingFolder.. "BasicTrainingGroundStartChallenge.png", HeroTrainingFolder.. "Points.png")
 --PressUntil(HeroTrainingFolder.. "BasicTrainingGroundStartChallenge.png", HeroTrainingFolder.. "HeroTrainingGroundBasicBackBtn.png")
---toast("Waiting to complete Dummy Attack")
 wait(1)
---wait(24)
-toast("closing")
 Press(HeroTrainingFolder.. "HeroTrainingGroundBasicPoints.png")
 wait(7)
 end
@@ -34,7 +33,6 @@ wait(1)
 end
 
 function Start()
---toast("Starting Hero Training")
 wait(1)
 CampStatus()
 HeroTrainingGround()

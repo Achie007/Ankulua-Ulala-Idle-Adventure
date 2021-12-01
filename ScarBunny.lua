@@ -5,6 +5,7 @@ usePreviousSnap(false)
 local Folder = "Fight/"
 local HareBurrow = Folder.."HareBurrow/"
 local ScarBunnyFolder = HareBurrow.."ScarBunny/"
+local OCRFolder = "OCR/"
 
 function AttackBunny()
 PressUntil(ScarBunnyFolder.. SBunny..".png", ScarBunnyFolder.. "Challenge.png")
@@ -13,11 +14,22 @@ PressUntil(ScarBunnyFolder.. "Skip.png", ScarBunnyFolder.. "StoreIT.png")
 PressUntil(ScarBunnyFolder.. "StoreIT.png", HareBurrow.. "AllMaps.png")
 end
 
+function BunnyOCR()
+repeat
+	SBunny = SearchImage({ScarBunnyFolder.. "BunnyLogo.png"})
+until(SBunny)
+bX = Split(SBunny, ",")[1]
+bY = Split(SBunny, ",")[2]
+r = Region(tonumber(bX) + 10, tonumber(bY) - 20, 40, 35)
+--r:highlight(2)
+p = numberOCRNoFindException(r,OCRFolder.. "HB")
+return p
+end
+
 function SearchBunny()
 count = 0
 repeat
-	Stats = SearchImageScreen({ScarBunnyFolder.. "NormalBunnny0.png"})
-	if not (Stats) then
+	if not (BunnyOCR() == 0) then
 		SBunny = SearchImageScreen(ScarBunnyNormal)
 		if (SBunny) then 
 			AttackBunny()
@@ -30,9 +42,9 @@ repeat
 			elseif (count >= 11) and (count < 15) then SwipeBunny("UP")
 			end
 		end
-		count = count + 1
 		wait(1)
 	end
+	count = count + 1
 until(count == 15) or (Stats)
 end
 
@@ -47,6 +59,7 @@ end
 function start()
 OpeningHareBurrow()
 SearchBunny()
+print(version)
 end
 
 start()

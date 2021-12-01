@@ -19,6 +19,25 @@ function CheckAdventureStatus()
 end
 
 function CheckAdventureClaimStatus()
+repeat
+DispatchStats = SearchImageScreen({PetAdventureFolder.. "Dispatch.png"})
+until(DispatchStats)
+
+Stats = SearchImageScreen(PetAdventureStatus)
+if (Stats) then --Not Pending
+	if (Stats == "PetAdventureQuickAdventureBtn") then
+		QuickAdventure()
+	else
+		ClaimAll()
+		wait(.5)
+		QuickAdventure()	
+	end
+else
+print("Pet Adventure not yet ready")
+end
+end
+
+function CheckAdventureClaimStatus2()
 wait(1)
 Stats = SearchImageScreen(PetAdventureStatus)
 if (Stats) then --Not Pending
@@ -36,20 +55,14 @@ end
 
 
 function ClaimAll()
-print("claiming")
 repeat
 Press(PetAdventureFolder.. "PetAdventureClaimAllBtn.png", 1)
-wait(1)
 Stats = SearchImageScreen({PetAdventureFolder.. "PetAdventureClaimAllBtn.png"})
 until not (Stats)
---PressUntil(PetAdventureFolder.. "PetAdventureClaimAllBtn.png", PetAdventureFolder.. "PetAdventureTaptoContinue.png", 1)
-print("tap to continue")
 PressUntil(PetAdventureFolder.. "PetAdventureTaptoContinue.png", PetAdventureFolder.. "PetAdventureQuickAdventureBtn.png", 1) --clicking tap to continue button
-print("done claiming")
 end
 
 function QuickAdventure()
-print("start quick adventure")
 PressUntil(PetAdventureFolder.. "PetAdventureQuickAdventureBtn.png", PetAdventureFolder.. "PetAdventureQuickJoinBtn.png", 1) --clicking Quick Adventure button
 PressUntil(PetAdventureFolder.. "PetAdventureQuickJoinBtn.png", PetAdventureFolder.. "PetAdventureStartAdventureBtn.png", 1) --clicking Quick Join button
 PressUntil(PetAdventureFolder.. "PetAdventureStartAdventureBtn.png", PetAdventureFolder.. "PetAdventureStartAdventureConfirmBtn.png", 1) --clicking Start Adventure button
