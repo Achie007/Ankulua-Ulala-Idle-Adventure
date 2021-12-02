@@ -23,8 +23,14 @@ end
 PressUntil(HeroTrainingFolder.. "BasicTrainingGroundStartChallenge.png", HeroTrainingFolder.. "Points.png")
 --PressUntil(HeroTrainingFolder.. "BasicTrainingGroundStartChallenge.png", HeroTrainingFolder.. "HeroTrainingGroundBasicBackBtn.png")
 wait(1)
+repeat
 Press(HeroTrainingFolder.. "HeroTrainingGroundBasicPoints.png")
-wait(7)
+wait(.2)
+until not(SearchImageScreen({HeroTrainingFolder.. "HeroTrainingGroundBasicPoints.png"}))
+
+repeat
+wait(.2)
+until (SearchImageScreen({HeroTrainingFolder.. "BasicTrainingGroundStartChallenge.png"}))
 end
 
 function ending()

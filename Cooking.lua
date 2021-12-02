@@ -19,7 +19,7 @@ function FoodClick()
 	local Random
 	repeat
 		Random = RandomNumber()
-		local Food = FoodListFolder.. "Food" ..Random.. ".png"
+		Food = FoodListFolder.. "Food" ..Random.. ".png"
 	until(SearchImage({Food}))
 	
 	repeat

@@ -14,9 +14,10 @@ PressUntil(ScarBunnyFolder.. "Skip.png", ScarBunnyFolder.. "StoreIT.png")
 PressUntil(ScarBunnyFolder.. "StoreIT.png", HareBurrow.. "AllMaps.png")
 end
 
-function BunnyOCR()
+function BunnyOCR(Type)
 repeat
-	SBunny = SearchImage({ScarBunnyFolder.. "BunnyLogo.png"})
+if (Type == "Epic") then SBunny = SearchImage({ScarBunnyFolder.. "EpicBunnyLogo.png"})
+else SBunny = SearchImage({ScarBunnyFolder.. "LegendaryBunnyLogo.png"}) end
 until(SBunny)
 bX = Split(SBunny, ",")[1]
 bY = Split(SBunny, ",")[2]
@@ -29,8 +30,9 @@ end
 function SearchBunny()
 count = 0
 repeat
-	if not (BunnyOCR() == 0) then
-		SBunny = SearchImageScreen(ScarBunnyNormal)
+	if not (BunnyOCR(HairBurrowType) == 0) then
+		if (HairBurrowType == "Epic") then SBunny = SearchImageScreen(ScarBunnyNormal)
+		else SBunny = SearchImageScreen({ScarBunnyFolder.. "LegendaryScarBunny.png"}) end
 		if (SBunny) then 
 			AttackBunny()
 			count = 0

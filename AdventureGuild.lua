@@ -28,7 +28,7 @@ function AdventureGuildStatus()
 end
 
 function DailyQuestStatus()
-wait(1)
+wait(2)
 DQStatus = SearchImageScreen(DQListStatus, Region(550, 630, 120, 140))
 if (DQStatus == "StatusClaim") then -- Claim available
 	Claiming()
